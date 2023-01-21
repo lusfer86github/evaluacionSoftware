@@ -60,6 +60,7 @@ class App extends React.Component{
      rating3M: 6,
      rating4M: 6,
      
+     Name_soft:'',
     }
 
 this.onChangeRating = this.onChangeRating.bind(this);
@@ -233,9 +234,10 @@ this.handleSubmit = this.handleSubmit.bind(this);
     const promedioG = (this.state.rating1G + this.state.rating2G + this.state.rating3G+ this.state.rating4G+ this.state.rating5G + this.state.rating6G + this.state.rating7G+ this.state.rating8G)/8
     const promedioV = (this.state.rating1V + this.state.rating2V + this.state.rating3V+ this.state.rating4V)/4
     const promedioM = (this.state.rating1M + this.state.rating2M + this.state.rating3M+ this.state.rating4M)/4
-     if ((promedioI&&promedioG&&promedioV&&promedioM) <= 5)
+    const Name_soft1 = this.state.Name_soft 
+    if ((promedioI&&promedioG&&promedioV&&promedioM) <= 5)
      { 
-      swal("Rating por criterio:"," Instalación: "+promedioI+" Estrellas \n Interfaz Grafica: "+promedioG
+      swal("Software:"+Name_soft1," Rating por criterio: \nInstalación: "+promedioI+" Estrellas \n Interfaz Grafica: "+promedioG
   +" Estrellas \n Versatilidad: "+promedioV+" Estrellas \n Motivación: "+promedioM+" Estrellas","success");
      }
      else
@@ -246,14 +248,40 @@ this.handleSubmit = this.handleSubmit.bind(this);
 
   render(){
 
+    const Name_soft = this.state.Name_soft
+
     return (
       <div className="app">
-        
-        <h1 class="text-center">Características Tecnológicas del Modelo Fermina 2023</h1>
+        <h1 class="text-center">MODELO DE EVALUACION FERMINA 2023</h1>
+        <p></p>
+        <h2 class="text-center">INSTRUMENTO DE EVALUACION PARA EVALUAR LA CALIDAD DE UN SOFTWARE</h2>
+        <p></p>
         <p></p>
 
           <form>
-            
+          
+          <p></p>
+          <p>Los criterios serán evaluados teniendo en cuenta características
+que corresponde teniendo a considerar la siguiente escala o métrica
+de puntuación. 
+<br></br>
+
+El software no cumple con los requisitos
+de evaluación. (1)<br></br>
+El software cumple con los requisitos
+mínimos para ser evaluado, pero debe mejorarse. (3)<br></br>
+El software
+cumple satisfactoriamente con todos los requisitos para ser validado.
+(5)<br></br>
+<br></br>
+Al final se obtendrá un puntaje total que se obtiene
+de la sumatoria de los puntajes parciales que obtuvieron cada
+categoría con la finalidad de determinar la calidad del software.</p>
+
+
+<div>NOMBRE DEL SOFTWARE:<textarea name="namesoft" value={Name_soft} onChange={(e) => this.setState({ Name_soft: e.target.value })}></textarea></div>
+
+
             <div><p><label ><h3 class="text-center">Criterio: Instalación</h3></label> </p>
               <li>                  
                   <label > 1. El software se instala desde un ejecutable:
